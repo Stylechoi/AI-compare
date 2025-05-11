@@ -11,14 +11,14 @@ const BenchmarkTable: React.FC<BenchmarkTableProps> = ({ data, activeTab }) => {
     });
   }, [data.models, activeTab]);
 
-  // 열 헤더 정보
+  // 열 헤더 정보 - 모바일 최적화를 위해 클래스 수정
   const columns = [
-    { id: 'rank', label: '순위', className: 'w-16 text-center' },
-    { id: 'name', label: '모델명', className: 'w-1/4' },
-    { id: 'organization', label: '개발사', className: 'w-1/6' },
-    { id: 'parameters', label: '파라미터', className: 'w-1/6' },
-    { id: 'score', label: '점수 (%)', className: 'w-1/6 text-right' },
-    { id: 'releaseDate', label: '출시일', className: 'w-1/6 text-center' },
+    { id: 'rank', label: '순위', className: 'w-12 text-center' },
+    { id: 'name', label: '모델명', className: 'w-auto' },
+    { id: 'organization', label: '개발사', className: 'w-auto hidden md:table-cell' },
+    { id: 'parameters', label: '파라미터', className: 'w-auto hidden md:table-cell' },
+    { id: 'score', label: '점수 (%)', className: 'w-24 text-right' },
+    { id: 'releaseDate', label: '출시일', className: 'w-auto hidden sm:table-cell text-center' },
   ];
 
   // 벤치마크 이름과 설명
@@ -32,8 +32,8 @@ const BenchmarkTable: React.FC<BenchmarkTableProps> = ({ data, activeTab }) => {
 
   return (
     <div className="card">
-      <div className="mb-4 flex justify-between items-center">
-        <div>
+      <div className="mb-4 flex flex-col sm:flex-row sm:justify-between sm:items-center">
+        <div className="mb-2 sm:mb-0">
           <h3 className="text-xl font-bold">{benchmarkInfo[activeTab as keyof typeof benchmarkInfo]?.name}</h3>
           <p className="text-sm text-gray-600 dark:text-gray-400">
             {benchmarkInfo[activeTab as keyof typeof benchmarkInfo]?.description}
@@ -52,7 +52,7 @@ const BenchmarkTable: React.FC<BenchmarkTableProps> = ({ data, activeTab }) => {
         </div>
       </div>
 
-      <div className="table-container">
+      <div className="table-container rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden">
         <table className="comparison-table">
           <thead>
             <tr className="header-row">
@@ -70,25 +70,25 @@ const BenchmarkTable: React.FC<BenchmarkTableProps> = ({ data, activeTab }) => {
               if (!score) return null;
               
               return (
-                <tr key={model.name}>
-                  <td className="text-center">
+                <tr key={model.name} className="hover:bg-gray-100 dark:hover:bg-gray-800/50 transition-colors">
+                  <td className="text-center font-semibold">
                     {score.rank || index + 1}
                   </td>
-                  <td className="model-cell">
-                    {model.name}
+                  <td className="model-cell truncate max-w-[150px] sm:max-w-none">
+                    <span className="text-sm sm:text-base">{model.name}</span>
                   </td>
-                  <td>
+                  <td className="hidden md:table-cell">
                     {model.organization}
                   </td>
-                  <td>
+                  <td className="hidden md:table-cell">
                     {model.parameters || '-'}
                   </td>
-                  <td className="score-cell">
+                  <td className="score-cell whitespace-nowrap">
                     <span className={`font-semibold ${index === 0 ? 'text-primary' : ''}`}>
                       {score.score.toFixed(1)}
                     </span>
                   </td>
-                  <td className="text-center">
+                  <td className="text-center hidden sm:table-cell">
                     {model.releaseDate || '-'}
                   </td>
                 </tr>
