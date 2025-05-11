@@ -3,6 +3,7 @@ import type { BenchmarkData } from '../types';
 
 /**
  * 서버 API를 통해 LLM 성능 데이터를 가져옵니다.
+ * 서버는 Hugging Face의 공식 API를 사용하여 데이터를 가져옵니다.
  */
 export async function fetchLLMData(): Promise<BenchmarkData> {
   try {
@@ -15,8 +16,11 @@ export async function fetchLLMData(): Promise<BenchmarkData> {
 }
 
 /**
- * 크롤링 관련 함수는 서버 사이드 코드로 이동했습니다.
- * 이 파일은 클라이언트 측에서 사용되므로 cheerio 관련 코드를 제거합니다.
+ * 참고: 
+ * - 이 프론트엔드 코드는 서버 API를 호출합니다.
+ * - 서버는 Hugging Face의 공식 API를 통해 데이터를 획득하므로 크롤링이 불필요합니다.
+ * - 성능 데이터는 https://huggingface.co/api/spaces/open-llm-leaderboard/results API를 통해 
+ *   합법적으로 얻습니다.
  */
 
 /**
