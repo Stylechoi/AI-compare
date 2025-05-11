@@ -35,7 +35,7 @@ body {
 }
 
 .comparison-table th {
-  @apply px-2 sm:px-4 py-3 bg-gray-100 dark:bg-gray-700 text-left text-xs sm:text-sm font-semibold border-b border-gray-200 dark:border-gray-600;
+  @apply px-2 sm:px-4 py-3 bg-gray-100 dark:bg-gray-700 text-center text-xs sm:text-sm font-semibold border-b border-gray-200 dark:border-gray-600;
 }
 
 .comparison-table td {
@@ -55,7 +55,7 @@ body {
 }
 
 .score-cell {
-  @apply font-mono text-right;
+  @apply font-mono text-center;
 }
 
 .header-row {

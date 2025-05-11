@@ -11,14 +11,14 @@ const BenchmarkTable: React.FC<BenchmarkTableProps> = ({ data, activeTab }) => {
     });
   }, [data.models, activeTab]);
 
-  // 열 헤더 정보 - 모바일 최적화를 위해 클래스 수정
+  // 열 헤더 정보 - 모든 화면에서 표시되도록 수정
   const columns = [
     { id: 'rank', label: '순위', className: 'w-12 text-center' },
-    { id: 'name', label: '모델명', className: 'w-auto' },
-    { id: 'organization', label: '개발사', className: 'w-auto hidden md:table-cell' },
-    { id: 'parameters', label: '파라미터', className: 'w-auto hidden md:table-cell' },
-    { id: 'score', label: '점수 (%)', className: 'w-24 text-right' },
-    { id: 'releaseDate', label: '출시일', className: 'w-auto hidden sm:table-cell text-center' },
+    { id: 'name', label: '모델명', className: 'w-auto text-center' },
+    { id: 'organization', label: '개발사', className: 'w-auto text-center' },
+    { id: 'parameters', label: '파라미터', className: 'w-auto text-center' },
+    { id: 'score', label: '점수 (%)', className: 'w-24 text-center' },
+    { id: 'releaseDate', label: '출시일', className: 'w-auto text-center' },
   ];
 
   // 벤치마크 이름과 설명
@@ -74,21 +74,21 @@ const BenchmarkTable: React.FC<BenchmarkTableProps> = ({ data, activeTab }) => {
                   <td className="text-center font-semibold">
                     {score.rank || index + 1}
                   </td>
-                  <td className="model-cell truncate max-w-[150px] sm:max-w-none">
+                  <td className="model-cell text-center truncate max-w-[150px] sm:max-w-none">
                     <span className="text-sm sm:text-base">{model.name}</span>
                   </td>
-                  <td className="hidden md:table-cell">
+                  <td className="text-center">
                     {model.organization}
                   </td>
-                  <td className="hidden md:table-cell">
+                  <td className="text-center">
                     {model.parameters || '-'}
                   </td>
-                  <td className="score-cell whitespace-nowrap">
+                  <td className="score-cell text-center whitespace-nowrap">
                     <span className={`font-semibold ${index === 0 ? 'text-primary' : ''}`}>
                       {score.score.toFixed(1)}
                     </span>
                   </td>
-                  <td className="text-center hidden sm:table-cell">
+                  <td className="text-center">
                     {model.releaseDate || '-'}
                   </td>
                 </tr>
