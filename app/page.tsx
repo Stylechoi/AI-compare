@@ -48,8 +48,8 @@ export default function Home() {
       <section>
         <h2 className="text-2xl font-bold mb-4">AI 언어 모델 벤치마크 성능 비교</h2>
         <p className="text-gray-600 dark:text-gray-300 mb-6">
-          공신력 있는 벤치마크 사이트에서 최신 AI 언어 모델의 성능 데이터를 자동으로 수집하여 제공합니다.
-          데이터는 정기적으로 업데이트됩니다.
+          Hugging Face의 공식 API를 통해 최신 AI 언어 모델의 성능 데이터를 제공합니다.
+          데이터는 24시간마다 자동으로 업데이트됩니다.
         </p>
         
         {loading ? (

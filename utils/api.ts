@@ -16,11 +16,11 @@ export async function fetchLLMData(): Promise<BenchmarkData> {
 }
 
 /**
- * 참고: 
- * - 이 프론트엔드 코드는 서버 API를 호출합니다.
- * - 서버는 Hugging Face의 공식 API를 통해 데이터를 획득하므로 크롤링이 불필요합니다.
+ * Hugging Face API 정보:
+ * - 이 애플리케이션은 Hugging Face의 공식 API를 사용합니다.
  * - 성능 데이터는 https://huggingface.co/api/spaces/open-llm-leaderboard/results API를 통해 
  *   합법적으로 얻습니다.
+ * - 서버에서 데이터를 변환하여 클라이언트에 전달합니다.
  */
 
 /**
@@ -29,7 +29,7 @@ export async function fetchLLMData(): Promise<BenchmarkData> {
 function getMockBenchmarkData(): BenchmarkData {
   return {
     lastUpdated: new Date().toISOString(),
-    sourceUrl: 'https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard',
+    sourceUrl: 'https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard',
     models: [
       {
         name: 'Claude 3 Opus',

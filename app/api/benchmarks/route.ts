@@ -68,7 +68,7 @@ function processLeaderboardData(apiData: any): ModelData[] {
     });
   } catch (error) {
     console.error('Error processing leaderboard data:', error);
-    // 데이터 처리에 문제가 있을 경우 빈 배열 대신 목업 데이터의 모델을 반환합니다
+    // 데이터 처리에 문제가 있을 경우 기본 목업 데이터의 모델을 반환합니다
     return getMockBenchmarkData().models;
   }
 }
@@ -108,7 +108,7 @@ export async function GET() {
 function getMockBenchmarkData(): BenchmarkData {
   return {
     lastUpdated: new Date().toISOString(),
-    sourceUrl: 'https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard',
+    sourceUrl: 'https://huggingface.co/spaces/open-llm-leaderboard/open_llm_leaderboard',
     models: [
       {
         name: 'Claude 3 Opus',
