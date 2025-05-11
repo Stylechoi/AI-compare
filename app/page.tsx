@@ -28,11 +28,6 @@ export default function Home() {
     };
 
     loadData();
-    
-    // 24시간마다 데이터 자동 갱신
-    const intervalId = setInterval(loadData, 24 * 60 * 60 * 1000);
-    
-    return () => clearInterval(intervalId);
   }, []);
 
   const benchmarkTabs = [
@@ -49,7 +44,7 @@ export default function Home() {
         <h2 className="text-2xl font-bold mb-4">AI 언어 모델 벤치마크 성능 비교</h2>
         <p className="text-gray-600 dark:text-gray-300 mb-6">
           Hugging Face의 공식 API를 통해 최신 AI 언어 모델의 성능 데이터를 제공합니다.
-          데이터는 24시간마다 자동으로 업데이트됩니다.
+          페이지를 새로고침하면 최신 데이터를 확인할 수 있습니다.
         </p>
         
         {loading ? (
