@@ -15,43 +15,9 @@ export async function fetchLLMData(): Promise<BenchmarkData> {
 }
 
 /**
- * 실제 크롤링 코드 예시 (서버 사이드에서 실행되어야 함)
- * 크롤링은 Next.js API 라우트 또는 서버 컴포넌트에서 구현해야 합니다.
+ * 크롤링 관련 함수는 서버 사이드 코드로 이동했습니다.
+ * 이 파일은 클라이언트 측에서 사용되므로 cheerio 관련 코드를 제거합니다.
  */
-async function scrapeHuggingFaceLeaderboard() {
-  try {
-    // MMLU 벤치마크 데이터
-    const mmluUrl = 'https://huggingface.co/spaces/HuggingFaceH4/open_llm_leaderboard';
-    const response = await axios.get(mmluUrl);
-    const $ = cheerio.load(response.data);
-    
-    // 여기서 HTML 파싱 및 데이터 추출 로직을 구현합니다.
-    // 실제 구현 시 사이트의 HTML 구조에 맞게 조정이 필요합니다.
-    
-    // 예: 
-    // const models: ModelData[] = [];
-    // $('.leaderboard-row').each((i, el) => {
-    //   const name = $(el).find('.model-name').text().trim();
-    //   const organization = $(el).find('.organization').text().trim();
-    //   const score = parseFloat($(el).find('.score-mmlu').text().trim());
-    //   
-    //   models.push({
-    //     name,
-    //     organization,
-    //     mmlu: { score }
-    //   });
-    // });
-    
-    // return {
-    //   lastUpdated: new Date().toISOString(),
-    //   sourceUrl: mmluUrl,
-    //   models
-    // };
-  } catch (error) {
-    console.error('Error scraping data:', error);
-    throw new Error('Failed to scrape leaderboard data');
-  }
-}
 
 /**
  * 개발용 목업 데이터

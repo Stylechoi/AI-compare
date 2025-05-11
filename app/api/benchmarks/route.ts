@@ -1,6 +1,5 @@
 import { NextResponse } from 'next/server';
 import axios from 'axios';
-import * as cheerio from 'cheerio';
 import type { BenchmarkData, ModelData } from '../../../types';
 
 // 실제 서비스에서는 이 함수를 확장하여 여러 벤치마크 사이트에서 데이터를 수집할 수 있습니다.
