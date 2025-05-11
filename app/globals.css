@@ -1,0 +1,56 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --foreground-rgb: 0, 0, 0;
+  --background-rgb: 255, 255, 255;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --foreground-rgb: 255, 255, 255;
+    --background-rgb: 18, 18, 23;
+  }
+}
+
+body {
+  color: rgb(var(--foreground-rgb));
+  background: rgb(var(--background-rgb));
+}
+
+.card {
+  @apply bg-white dark:bg-secondary rounded-lg shadow-md p-6 transition-transform duration-300 hover:shadow-lg;
+}
+
+.table-container {
+  @apply w-full overflow-x-auto;
+}
+
+.comparison-table {
+  @apply min-w-full table-auto border-collapse;
+}
+
+.comparison-table th {
+  @apply px-4 py-3 bg-gray-100 dark:bg-gray-800 text-left font-semibold border border-gray-200 dark:border-gray-700;
+}
+
+.comparison-table td {
+  @apply px-4 py-2 border border-gray-200 dark:border-gray-700;
+}
+
+.comparison-table tr:nth-child(even) {
+  @apply bg-gray-50 dark:bg-gray-900/50;
+}
+
+.model-cell {
+  @apply font-medium;
+}
+
+.score-cell {
+  @apply font-mono text-right;
+}
+
+.header-row {
+  @apply sticky top-0 z-10;
+} 
