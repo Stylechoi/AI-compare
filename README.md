@@ -2,6 +2,11 @@
 
 이 프로젝트는 다양한 AI 언어 모델(LLM)의 성능을 비교하는 웹 대시보드입니다. Hugging Face의 공식 API를 통해 최신 정보를 제공합니다.
 
+## 배포된 사이트
+
+  https://ai-compare-qmg3.vercel.app/
+
+
 ## 주요 기능
 
 - MMLU, HellaSwag, TruthfulQA 등 다양한 벤치마크에서의 AI 모델 성능 비교
