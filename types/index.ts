@@ -25,4 +25,4 @@ export interface BenchmarkData {
 export interface BenchmarkTableProps {
   data: BenchmarkData;
   activeTab: string;
-} 
+}
