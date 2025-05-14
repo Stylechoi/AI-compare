@@ -1,72 +1,80 @@
-      {/* LLM 기술 설명 섹션 */}
-      <section className="mb-12">
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
-          <h2 className="text-2xl md:text-3xl font-bold">AI 언어 모델 기술 이해하기</h2>
-          <button 
-            onClick={() => setShowAllContent(!showAllContent)} 
-            className="mt-2 sm:mt-0 text-sm text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 flex items-center"
-          >
-            {showAllContent ? '간략히 보기' : '모두 보기'} 
-            <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={showAllContent ? "M5 15l7-7 7 7" : "M19 9l-7 7-7-7"} />
-            </svg>
-          </button>
+'use client';
+
+import { useState } from 'react';
+
+export default function PagePart2() {
+  const [showAllContent, setShowAllContent] = useState(false);
+
+  return (
+    <section className="mb-12">
+      <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center mb-6">
+        <h2 className="text-2xl md:text-3xl font-bold">AI 언어 모델 기술 이해하기</h2>
+        <button 
+          onClick={() => setShowAllContent(!showAllContent)} 
+          className="mt-2 sm:mt-0 text-sm text-indigo-600 hover:text-indigo-500 dark:text-indigo-400 flex items-center"
+        >
+          {showAllContent ? '간략히 보기' : '모두 보기'} 
+          <svg className="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d={showAllContent ? "M5 15l7-7 7 7" : "M19 9l-7 7-7-7"} />
+          </svg>
+        </button>
+      </div>
+
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
+          <h3 className="text-xl font-bold mb-3 text-indigo-600 dark:text-indigo-400">왜 AI 모델 성능 비교가 중요한가요?</h3>
+          <p className="text-gray-700 dark:text-gray-300 mb-4">
+            AI 언어 모델(LLM)은 각각 다른 강점과 약점을 가지고 있습니다. 특정 작업에 가장 적합한 모델을 선택하려면 공식적인 벤치마크를 
+            통한 객관적 성능 비교가 필수적입니다.
+          </p>
+          <ul className="text-gray-700 dark:text-gray-300 space-y-2 list-disc pl-5">
+            <li>적절한 사용 사례 파악</li>
+            <li>비용 대비 효율성 판단</li>
+            <li>특정 분야에 특화된 능력 확인</li>
+            <li>기술 발전 방향 예측</li>
+          </ul>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
-            <h3 className="text-xl font-bold mb-3 text-indigo-600 dark:text-indigo-400">왜 AI 모델 성능 비교가 중요한가요?</h3>
-            <p className="text-gray-700 dark:text-gray-300 mb-4">
-              AI 언어 모델(LLM)은 각각 다른 강점과 약점을 가지고 있습니다. 특정 작업에 가장 적합한 모델을 선택하려면 공식적인 벤치마크를 
-              통한 객관적 성능 비교가 필수적입니다.
-            </p>
-            <ul className="text-gray-700 dark:text-gray-300 space-y-2 list-disc pl-5">
-              <li>적절한 사용 사례 파악</li>
-              <li>비용 대비 효율성 판단</li>
-              <li>특정 분야에 특화된 능력 확인</li>
-              <li>기술 발전 방향 예측</li>
-            </ul>
-          </div>
-
-          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
-            <h3 className="text-xl font-bold mb-3 text-indigo-600 dark:text-indigo-400">주요 AI 모델 비교</h3>
-            <div className="overflow-auto">
-              <table className="min-w-full text-sm">
-                <thead>
-                  <tr className="border-b border-gray-200 dark:border-gray-700">
-                    <th className="text-left py-2 px-1">모델</th>
-                    <th className="text-left py-2 px-1">개발사</th>
-                    <th className="text-left py-2 px-1">특징</th>
-                  </tr>
-                </thead>
-                <tbody>
-                  <tr className="border-b border-gray-200 dark:border-gray-700">
-                    <td className="py-2 px-1 font-medium">GPT-4</td>
-                    <td className="py-2 px-1">OpenAI</td>
-                    <td className="py-2 px-1">높은 추론 능력과 다중 모달 기능</td>
-                  </tr>
-                  <tr className="border-b border-gray-200 dark:border-gray-700">
-                    <td className="py-2 px-1 font-medium">Claude</td>
-                    <td className="py-2 px-1">Anthropic</td>
-                    <td className="py-2 px-1">장문 처리와 안전성에 특화</td>
-                  </tr>
-                  <tr className="border-b border-gray-200 dark:border-gray-700">
-                    <td className="py-2 px-1 font-medium">Gemini</td>
-                    <td className="py-2 px-1">Google</td>
-                    <td className="py-2 px-1">멀티모달 이해력과 추론 능력</td>
-                  </tr>
-                  <tr className="border-b border-gray-200 dark:border-gray-700">
-                    <td className="py-2 px-1 font-medium">Llama</td>
-                    <td className="py-2 px-1">Meta</td>
-                    <td className="py-2 px-1">오픈소스로 확장성과 커스터마이징</td>
-                  </tr>
-                </tbody>
-              </table>
-            </div>
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
+          <h3 className="text-xl font-bold mb-3 text-indigo-600 dark:text-indigo-400">주요 AI 모델 비교</h3>
+          <div className="overflow-auto">
+            <table className="min-w-full text-sm">
+              <thead>
+                <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <th className="text-left py-2 px-1">모델</th>
+                  <th className="text-left py-2 px-1">개발사</th>
+                  <th className="text-left py-2 px-1">특징</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <td className="py-2 px-1 font-medium">GPT-4</td>
+                  <td className="py-2 px-1">OpenAI</td>
+                  <td className="py-2 px-1">높은 추론 능력과 다중 모달 기능</td>
+                </tr>
+                <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <td className="py-2 px-1 font-medium">Claude</td>
+                  <td className="py-2 px-1">Anthropic</td>
+                  <td className="py-2 px-1">장문 처리와 안전성에 특화</td>
+                </tr>
+                <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <td className="py-2 px-1 font-medium">Gemini</td>
+                  <td className="py-2 px-1">Google</td>
+                  <td className="py-2 px-1">멀티모달 이해력과 추론 능력</td>
+                </tr>
+                <tr className="border-b border-gray-200 dark:border-gray-700">
+                  <td className="py-2 px-1 font-medium">Llama</td>
+                  <td className="py-2 px-1">Meta</td>
+                  <td className="py-2 px-1">오픈소스로 확장성과 커스터마이징</td>
+                </tr>
+              </tbody>
+            </table>
           </div>
         </div>
+      </div>
 
-        {showAllContent && (
+      {showAllContent && (
+        <>
           <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
             <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
               <h3 className="text-xl font-bold mb-3 text-indigo-600 dark:text-indigo-400">LLM의 주요 기술적 요소</h3>
@@ -125,9 +133,7 @@
               </div>
             </div>
           </div>
-        )}
 
-        {showAllContent && (
           <div className="mt-8 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
             <h3 className="text-xl font-bold mb-3 text-indigo-600 dark:text-indigo-400">벤치마크 결과의 실제 적용</h3>
             <p className="text-gray-700 dark:text-gray-300 mb-4">
@@ -157,5 +163,8 @@
               </div>
             </div>
           </div>
-        )}
-      </section>
+        </>
+      )}
+    </section>
+  );
+}

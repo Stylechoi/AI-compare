@@ -1,3 +1,12 @@
+'use client';
+
+import { useState } from 'react';
+
+export default function PagePart3() {
+  const [showAllContent, setShowAllContent] = useState(false);
+
+  return (
+    <>
       {/* FAQ 섹션 */}
       <section className="mb-12 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
         <h2 className="text-2xl font-bold mb-6">자주 묻는 질문</h2>
@@ -97,6 +106,6 @@
           </div>
         </section>
       )}
-    </div>
+    </>
   );
 }

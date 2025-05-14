@@ -1,4 +1,11 @@
-{showAllContent && (
+import { useState } from 'react';
+
+export default function PageEnding() {
+  const [showAllContent] = useState(true);
+
+  return (
+    <div>
+      {showAllContent && (
         <section className="mb-12 bg-white dark:bg-gray-800 rounded-xl shadow-sm p-6">
           <h2 className="text-2xl font-bold mb-4">개선 예정 기능</h2>
           <p className="text-gray-700 dark:text-gray-300 mb-6">
