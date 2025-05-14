@@ -78,7 +78,7 @@ export default function BenchmarkTable({ data, activeTab }: BenchmarkTableProps)
   };
 
   return (
-    <div className="overflow-x-auto rounded-lg border border-gray-200 dark:border-gray-700">
+    <div className="w-full overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
       <div className="p-4 md:p-6 flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-gray-200 dark:border-gray-700">
         <div className="mb-2 sm:mb-0">
           <h3 className="text-xl font-bold text-gray-900 dark:text-white">
@@ -101,52 +101,54 @@ export default function BenchmarkTable({ data, activeTab }: BenchmarkTableProps)
         </div>
       </div>
 
-      <table className="min-w-full divide-y divide-gray-200 dark:divide-gray-700">
-        <thead>
-          <tr>
-            <th className="sticky left-0 z-10 bg-gray-50 dark:bg-gray-800 px-4 py-3 text-center w-20">
-              순위
-            </th>
-            <th className="px-4 py-3 text-left">모델</th>
-            <th className="px-4 py-3 text-left">조직</th>
-            <th className="px-4 py-3 text-left">성능 점수</th>
-            <th className="px-4 py-3 text-left">파라미터</th>
-            <th className="px-4 py-3 text-left">출시일</th>
-            <th className="px-4 py-3 text-center w-10">
-              <button
-                onClick={() => handleSort(activeTab)}
-                className="w-full flex items-center justify-center text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
-                title="정렬"
-              >
-                {renderSortIcon()}
-              </button>
-            </th>
-          </tr>
-        </thead>
-        <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
-          {sortedModels.map((model: ModelData, index: number) => (
-            <tr key={model.name} className={index % 2 === 0 ? 'bg-white dark:bg-gray-900' : 'bg-gray-50 dark:bg-gray-800/50'}>
-              <td className="sticky left-0 bg-inherit px-4 py-3 text-center font-medium">
-                <div className={`inline-flex items-center justify-center min-w-[2.5rem] ${index < 3 ? 'text-primary text-lg' : ''}`}>
-                  {renderRank(index)}
-                </div>
-              </td>
-              <td className="px-4 py-3 font-medium">
-                {model.name}
-              </td>
-              <td className="px-4 py-3">{model.organization}</td>
-              <td className="px-4 py-3 font-mono font-medium">
-                <span className={index < 3 ? 'text-primary' : ''}>
-                  {formatScore(model[activeTab]?.score)}
-                </span>
-              </td>
-              <td className="px-4 py-3">{model.parameters || '-'}</td>
-              <td className="px-4 py-3">{model.releaseDate || '-'}</td>
-              <td className="px-4 py-3"></td>
+      <div className="w-full overflow-x-auto">
+        <table className="w-full divide-y divide-gray-200 dark:divide-gray-700">
+          <thead className="bg-gray-50 dark:bg-gray-800">
+            <tr>
+              <th className="sticky left-0 z-10 bg-gray-50 dark:bg-gray-800 px-3 py-3 text-center w-16">
+                순위
+              </th>
+              <th className="px-3 py-3 text-left min-w-[140px]">모델</th>
+              <th className="px-3 py-3 text-left min-w-[100px]">조직</th>
+              <th className="px-3 py-3 text-left w-24">성능 점수</th>
+              <th className="px-3 py-3 text-left w-24">파라미터</th>
+              <th className="px-3 py-3 text-left w-24">출시일</th>
+              <th className="px-2 py-3 text-center w-8">
+                <button
+                  onClick={() => handleSort(activeTab)}
+                  className="w-full flex items-center justify-center text-gray-500 hover:text-gray-700 dark:text-gray-400 dark:hover:text-gray-300"
+                  title="정렬"
+                >
+                  {renderSortIcon()}
+                </button>
+              </th>
             </tr>
-          ))}
-        </tbody>
-      </table>
+          </thead>
+          <tbody className="divide-y divide-gray-200 dark:divide-gray-700">
+            {sortedModels.map((model: ModelData, index: number) => (
+              <tr key={model.name} className={index % 2 === 0 ? 'bg-white dark:bg-gray-900' : 'bg-gray-50 dark:bg-gray-800/50'}>
+                <td className="sticky left-0 bg-inherit px-3 py-3 text-center font-medium">
+                  <div className={`inline-flex items-center justify-center ${index < 3 ? 'text-primary text-lg' : ''}`}>
+                    {renderRank(index)}
+                  </div>
+                </td>
+                <td className="px-3 py-3 font-medium truncate max-w-[200px]">
+                  {model.name}
+                </td>
+                <td className="px-3 py-3 truncate">{model.organization}</td>
+                <td className="px-3 py-3 font-mono font-medium whitespace-nowrap">
+                  <span className={index < 3 ? 'text-primary' : ''}>
+                    {formatScore(model[activeTab]?.score)}
+                  </span>
+                </td>
+                <td className="px-3 py-3 whitespace-nowrap">{model.parameters || '-'}</td>
+                <td className="px-3 py-3 whitespace-nowrap">{model.releaseDate || '-'}</td>
+                <td className="px-2 py-3"></td>
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
       
       <div className="text-xs text-gray-500 dark:text-gray-400 p-4 border-t border-gray-200 dark:border-gray-700 text-right">
         마지막 업데이트: {new Date(data.lastUpdated).toLocaleDateString('ko-KR', {
