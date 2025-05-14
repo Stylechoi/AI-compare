@@ -4,7 +4,7 @@
 
 ## 배포된 사이트
 
-  https://ai-compare-qmg3.vercel.app/
+  https://aillmcompare.vercel.app/
 
 
 ## 주요 기능
