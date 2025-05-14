@@ -4,7 +4,7 @@
 
 ## 배포된 사이트
 
-  https://aillmcompare.vercel.app/g
+  https://aillmcompare.vercel.app/
 
 
 ## 주요 기능
