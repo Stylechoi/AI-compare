@@ -77,7 +77,7 @@ export default function Home() {
           </div>
         ) : (
           <>
-            <div className="mb-4 border-b border-gray-200 dark:border-gray-700 overflow-x-auto">
+            <div className="mb-4 border-b border-gray-200 dark:border-gray-700 overflow-x-hidden">
               <ul className="flex -mb-px text-sm font-medium text-center whitespace-nowrap">
                 {benchmarkTabs.map((tab) => (
                   <li key={tab.id} className="mr-1">
