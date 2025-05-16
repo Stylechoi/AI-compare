@@ -39,6 +39,17 @@ export default function Home() {
     { id: 'gsm8k', label: 'GSM8K' }
   ];
 
+  // 예시: 받아온 데이터 구조
+  const columns = [
+    { key: 'rank', label: 'Rank', align: 'center', width: 'w-10' },
+    { key: 'type', label: 'Type', align: 'center', width: 'w-12' },
+    { key: 'model', label: 'Model', align: 'left', width: 'min-w-[160px] max-w-[220px]' },
+    { key: 'average', label: 'Average', align: 'right', width: 'w-20', color: 'green' },
+    { key: 'mmlu', label: 'MMLU', align: 'right', width: 'w-20', color: 'green' },
+    { key: 'bbh', label: 'BBH', align: 'right', width: 'w-20', color: 'green' },
+    // ... API에서 오는 벤치마크별로 동적 추가
+  ];
+
   return (
     <div className="max-w-6xl mx-auto px-4 py-6">
       {/* 히어로 섹션 */}
@@ -77,26 +88,49 @@ export default function Home() {
           </div>
         ) : (
           <>
-            <div className="mb-4 border-b border-gray-200 dark:border-gray-700 overflow-x-hidden">
-              <ul className="flex -mb-px text-sm font-medium text-center whitespace-nowrap">
-                {benchmarkTabs.map((tab) => (
-                  <li key={tab.id} className="mr-1">
-                    <button
-                      className={`inline-block p-2 sm:p-4 border-b-2 ${
-                        activeTab === tab.id
-                          ? 'text-indigo-600 dark:text-indigo-400 border-indigo-600 dark:border-indigo-400 font-bold'
-                          : 'border-transparent hover:text-gray-600 hover:border-gray-300 dark:hover:text-gray-300'
-                      }`}
-                      onClick={() => setActiveTab(tab.id)}
-                    >
-                      {tab.label}
-                    </button>
-                  </li>
-                ))}
-              </ul>
+            <div className="flex space-x-8 border-b border-gray-200 dark:border-gray-700 mb-4">
+              {benchmarkTabs.map(tab => (
+                <button
+                  key={tab.id}
+                  className={`pb-3 text-lg font-extrabold transition-colors tracking-wide ${
+                    activeTab === tab.id
+                      ? 'text-indigo-600 dark:text-indigo-400 border-b-2 border-indigo-600 dark:border-indigo-400'
+                      : 'text-gray-600 dark:text-gray-300 border-b-2 border-transparent hover:text-indigo-400'
+                  }`}
+                  onClick={() => setActiveTab(tab.id)}
+                  style={{ background: 'none' }}
+                >
+                  {tab.label}
+                </button>
+              ))}
             </div>
 
-            {data && <BenchmarkTable data={data} activeTab={activeTab} />}
+            {data && (
+              <table className="w-full text-base text-left text-gray-700 dark:text-gray-300">
+                <thead className="bg-gray-50 dark:bg-gray-800">
+                  <tr>
+                    <th className="text-center font-bold px-2 py-3 w-[60px]">순위</th>
+                    <th className="text-left font-bold px-2 py-3 w-[220px]">모델</th>
+                    <th className="text-center font-bold px-2 py-3 w-[120px]">조직</th>
+                    <th className="text-right font-bold px-2 py-3 w-[120px]">성능 점수</th>
+                    <th className="text-center font-bold px-2 py-3 w-[100px]">파라미터</th>
+                    <th className="text-center font-bold px-2 py-3 w-[100px]">출시일</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {data.map((model, idx) => (
+                    <tr key={model.name} className={idx % 2 === 0 ? 'bg-white dark:bg-gray-900' : 'bg-gray-50 dark:bg-gray-800/50'}>
+                      <td className="text-center px-2 py-3 font-medium w-[60px]">{idx + 1}</td>
+                      <td className="text-left px-2 py-3 font-medium w-[220px] truncate">{model.name}</td>
+                      <td className="text-center px-2 py-3 w-[120px]">{model.organization}</td>
+                      <td className="text-right px-2 py-3 w-[120px] font-mono font-semibold text-blue-600 dark:text-blue-400">{model.score.toFixed(2)} %</td>
+                      <td className="text-center px-2 py-3 w-[100px]">{model.parameters || '-'}</td>
+                      <td className="text-center px-2 py-3 w-[100px]">{model.releaseDate || '-'}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            )}
           </>
         )}
       </section>
