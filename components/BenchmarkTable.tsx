@@ -78,7 +78,7 @@ export default function BenchmarkTable({ data, activeTab }: BenchmarkTableProps)
   };
 
   return (
-    <div className="w-full overflow-hidden rounded-lg border border-gray-200 dark:border-gray-700">
+    <div className="w-full overflow-hidden overflow-y-hidden rounded-lg border border-gray-200 dark:border-gray-700">
       <div className="p-4 md:p-6 flex flex-col sm:flex-row sm:justify-between sm:items-center border-b border-gray-200 dark:border-gray-700">
         <div className="mb-2 sm:mb-0">
           <h3 className="text-xl font-bold text-gray-900 dark:text-white">
